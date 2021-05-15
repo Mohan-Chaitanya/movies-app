@@ -13,20 +13,23 @@ function MovieDB(props) {
     var fetchURL = APIURL;
 
     var handleChange = (e) => {
-        setSearchTerm(e.target.value)
+        setSearchTerm(e.target.value);
         console.log(searchTerm);
     }
 
     var handleSubmit = (e) => {
         e.preventDefault();
         fetchURL = Search_API + searchTerm;
-        console.log(fetchURL);
-        fetch(fetchURL)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setMoviesArr(data.results);
-            })
+        if (searchTerm) {
+
+            fetch(fetchURL)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    setMoviesArr(data.results);
+                })
+            setSearchTerm('');
+        }
     }
 
 
@@ -63,7 +66,7 @@ function MovieDB(props) {
         <div>
             <div className='searchBox'>
                 <form onSubmit={handleSubmit}>
-                    <input placeholder='Search Favaouritess' type='search' onChange={handleChange}></input>
+                    <input placeholder='Search Favaouritess' type='search' onChange={handleChange} value={searchTerm}></input>
                 </form>
             </div>
             <div className='pageButtons'>
