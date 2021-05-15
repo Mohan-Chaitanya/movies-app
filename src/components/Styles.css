@@ -1,7 +1,7 @@
 .imgContainer {
   display: flex;
   flex-direction: column;
-  max-width: 250px;
+  width: 250px;
   max-height: 450px;
   margin: 1rem;
   background-color: rgb(94, 209, 66);

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import '../App.css';
-import Movies from './Movies'
+import Movies from './Movies';
+import Homepage from './Homepage'
 
 function MovieDB(props) {
     const [moviesArr, setMoviesArr] = useState([]);
@@ -14,18 +15,16 @@ function MovieDB(props) {
 
     var handleChange = (e) => {
         setSearchTerm(e.target.value);
-        console.log(searchTerm);
     }
 
     var handleSubmit = (e) => {
         e.preventDefault();
         fetchURL = Search_API + searchTerm;
         if (searchTerm) {
-
             fetch(fetchURL)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     setMoviesArr(data.results);
                 })
             setSearchTerm('');
@@ -41,7 +40,7 @@ function MovieDB(props) {
             fetch(fetchURL + i)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    //  console.log(data);
                     setMoviesArr(data.results);
                 })
         }
@@ -49,15 +48,19 @@ function MovieDB(props) {
 
     var previousPage = () => {
         var count = pageCount;
-        console.log(pageCount);
         count--;
         setpageCount(count);
-        for (let i = 1; i <= pageCount - 1; i++) {
-            fetch(fetchURL + i)
-                .then((response) => response.json())
-                .then((data) => {
-                    setMoviesArr(data.results);
-                })
+        if (pageCount <= 2) {
+            setMoviesArr([]);
+        } else {
+
+            for (let i = 1; i <= pageCount - 1; i++) {
+                fetch(fetchURL + i)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        setMoviesArr(data.results);
+                    })
+            }
         }
     }
 
@@ -70,7 +73,11 @@ function MovieDB(props) {
                 </form>
             </div>
             <div className='pageButtons'>
-                {pageCount === 1 ? <button onClick={nextPage}>NextPage</button> :
+                {pageCount == 1 ?
+                    <>
+                        <button onClick={nextPage}>NextPage</button>
+                        <Homepage />
+                    </> :
                     <>
                         <button onClick={previousPage}>PreviousPage</button>
                         <button onClick={nextPage}>NextPage</button>
