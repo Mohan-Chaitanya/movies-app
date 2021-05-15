@@ -1,0 +1,46 @@
+.imgContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  max-height: 450px;
+  margin: 1rem;
+  background-color: rgb(94, 209, 66);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px rgba(243, 97, 39, 0.2);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.imgContainer img {
+  height: 400px;
+  overflow: hidden;
+}
+
+.movieInfo {
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+.movieInfo h3 {
+  padding: 5px;
+  overflow: hidden;
+}
+
+.overView {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgb(155, 243, 96);
+  padding: 1rem;
+  max-height: 400px;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: 0.5s ease-in-out;
+}
+
+.imgContainer:hover .overView {
+  transform: translateY(0%);
+}

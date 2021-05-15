@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+body {
+  background-color: rgb(0, 0, 0);
+}
+
+.appTitle {
+  text-align: center;
+  height: 3rem;
+  font-size: 2rem;
+  background-color: #fdfa50;
+  color: #12026b;
+  font-family: "Pacifico";
+}
+
+.searchBox {
+  text-align: end;
+}
+
+.searchBox input {
+  border: 1px solid rgb(255, 255, 255);
+  height: 2rem;
+  background-color: transparent;
+  border-radius: 50px;
+  font-size: 1rem;
+  margin: 1rem;
+  color: white;
+}
+
+.movieContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 4.5rem;
+  transition: ease;
+}
+
+.pageButtons {
+  text-align: center;
+  padding: 1rem;
+}
+
+.pageButtons button {
+  width: 8rem;
+  height: 2rem;
+}
+
+.pageOne {
+  color: white;
+}
